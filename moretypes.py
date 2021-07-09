@@ -230,12 +230,11 @@ else:
 print("\n\n***Text Analyzer***")
 print("\n#1")
 # filename = input("Enter a filename: ")
-filename = "/Users/cjdiniz/Tek/GitHub/PySolo/test.txt"
+# filename = "/Users/cjdiniz/Tek/GitHub/PySolo/test.txt"
+filename = "./test.txt"
 with open(filename) as f:
     text = f.read()
 print(text)
-
-print("\n#2")
 
 
 def count_char(text, char):
@@ -244,3 +243,13 @@ def count_char(text, char):
         if c == char:
             count += 1
     return count
+
+
+print("\n#2")
+print(count_char(text, "r"))
+
+print("\n#3")
+for char in "abcdefghijklmnopqrstuvwxyz":
+
+    perc = 100 * count_char(text, char) / len(text)
+    print("{0} - {1}%".format(char, round(perc, 2)))
