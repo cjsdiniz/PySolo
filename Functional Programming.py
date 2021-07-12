@@ -269,7 +269,7 @@ def fibonacci(n):
 
 fibonacci(num)
 
-a = int(input('Give amount: '))
+a = int(input('Number \n'))
 
 
 def fib(n):
