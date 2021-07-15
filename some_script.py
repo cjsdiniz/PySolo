@@ -1,0 +1,2 @@
+import soloscript
+soloscript.function()
