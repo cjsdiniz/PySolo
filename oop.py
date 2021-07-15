@@ -133,3 +133,109 @@ c = C()
 c.method()
 c.another_method()
 c.third_method()
+
+
+print("\nMagic Methods & Operator Overloading")
+print("\n#1")
+
+
+class Vector2D:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Vector2D(self.x + other.x, self.y + other.y)
+
+
+first = Vector2D(5, 7)
+second = Vector2D(3, 9)
+result = first + second
+print(result.x)
+print(result.y)
+
+print("\nClass & Static Methods")
+print("\n#1")
+
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def calculate_area(self):
+        return self.width * self.height
+
+    @classmethod
+    def new_square(cls, side_length):
+        return cls(side_length, side_length)
+
+
+square = Rectangle.new_square(5)
+print(square.calculate_area())
+
+print("\n#2")
+
+
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+
+    @staticmethod
+    def validate_topping(topping):
+        if topping == "pineapple":
+            raise ValueError("No pineapples!")
+        else:
+            return True
+
+
+ingredients = ["cheese", "onions", "spam", "pineapple"]
+if all(Pizza.validate_topping(i) for i in ingredients):
+    pizza = Pizza(ingredients)
+
+print("\nProperties")
+print("\n#1")
+
+
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+
+    @property
+    def pineapple_allowed(self):
+        return False
+
+
+pizza = Pizza(["cheese", "tomato"])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = True
+
+
+print("\n#2")
+
+
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+        self._pineapple_allowed = False
+
+    @property
+    def pineapple_allowed(self):
+        return self._pineapple_allowed
+
+    @pineapple_allowed.setter
+    def pineapple_allowed(self, value):
+        if value:
+            password = input("Enter the password: ")
+            if password == "Sw0rdf1sh!":
+                self._pineapple_allowed = value
+            else:
+                raise ValueError("Alert! Intruder!")
+
+
+pizza = Pizza(["cheese", "tomato"])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = True
+print(pizza.pineapple_allowed)
+
+# Ver game.py
